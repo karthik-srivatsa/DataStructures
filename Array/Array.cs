@@ -25,6 +25,21 @@ namespace Array
             size = length;
             array = new T[size];
         }
+
+        /// <summary>
+        /// Indexer. To access array items using object
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public T this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= this.Length)
+                    throw new IndexOutOfRangeException();
+                return array[index];
+            }
+        }
         
         /// <summary>
         /// Add new item to an array.

@@ -42,7 +42,9 @@ Array is the basic data structure which holds the items in contigous memory. It 
             Console.WriteLine("Removing items from array.\nRemoving Resideo");
             array.RemoveAt(array.IndexOf("Resideo"));
             Console.WriteLine($"Current Length of the Array: {array.Length}.{Environment.NewLine}Current Size of Array is {array.MaxSize()}");
-            PrintArray();
+            Console.WriteLine("Accessing array using index");
+            for(int i = 0; i < array.Length; i++)
+                Console.WriteLine(array[i]);
             Console.WriteLine("Array operation completed");
         }
 
