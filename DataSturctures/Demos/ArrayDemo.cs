@@ -45,6 +45,16 @@ Array is the basic data structure which holds the items in contigous memory. It 
             Console.WriteLine("Accessing array using index");
             for(int i = 0; i < array.Count; i++)
                 Console.WriteLine(array[i]);
+            PrintSpaces();
+            Console.WriteLine("Inserting at Random index");
+            Console.WriteLine("Inserting Resideo at 2");
+            array.InsertAt("Resideo", 2);
+            Console.WriteLine("Inserted");
+            PrintArray();
+            PrintSpaces();
+            Console.WriteLine("Reversing Array");
+            array.Reverse();
+            PrintArray();
             Console.WriteLine("Array operation completed");
         }
 

@@ -58,7 +58,7 @@ namespace Array
         /// <returns></returns>
         public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < Count; i++)
                 yield return array[i];
         }
 
@@ -91,8 +91,8 @@ namespace Array
             if (Count == size)
                 ResizeArray();
 
-            for (int i = Count - 1; i > index; i--)
-                array[i + 1] = array[i];
+            for (int i = Count; i > index; i--)
+                array[i] = array[i - 1];
 
             array[index] = item;
             Count++;
