@@ -13,7 +13,7 @@ namespace Array
         private long size;
 
         private T[] array; 
-        public int Length { get; private set; }
+        public int Count { get; private set; }
         /// <summary>
         /// Returns the current maximum capacity of Array
         /// </summary>
@@ -35,7 +35,7 @@ namespace Array
         {
             get
             {
-                if (index < 0 || index >= this.Length)
+                if (index < 0 || index >= this.Count)
                     throw new IndexOutOfRangeException();
                 return array[index];
             }
@@ -47,9 +47,9 @@ namespace Array
         /// <param name="item"></param>
         public void Add(T item)
         {
-            if (Length == size)
+            if (Count == size)
                 ResizeArray();
-            array[Length++] = item;
+            array[Count++] = item;
         }
 
         /// <summary>
@@ -70,10 +70,32 @@ namespace Array
         /// <returns></returns>
         public int IndexOf(T item)
         {
-            for (int i = 0; i < Length; i++)
+            for (int i = 0; i < Count; i++)
                 if (array[i].CompareTo(item) == 0)
                     return i;
             return -1;
+        }
+
+        /// <summary>
+        /// Insert the passed item at given index
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="index"></param>
+        public void InsertAt(T item, int index)
+        {
+            if (index < 0)
+                throw new ArgumentException("Array cannot have negative index");
+            if (index > Count)
+                throw new ArgumentException($"Insertion cannot happen beyond the count of array");
+
+            if (Count == size)
+                ResizeArray();
+
+            for (int i = Count - 1; i > index; i--)
+                array[i + 1] = array[i];
+
+            array[index] = item;
+            Count++;
         }
 
         /// <summary>
@@ -82,16 +104,28 @@ namespace Array
         /// <param name="index"></param>
         public void RemoveAt(int index)
         {
-            if (index < 0 || index >= this.Length)
+            if (index < 0 || index >= this.Count)
                 throw new IndexOutOfRangeException();
 
-            while(index < Length)
+            while(index < Count)
             {
                 array[index] = array[index + 1];
                 index++;
             }
-            array[Length] = default;
-            Length--;
+            array[Count] = default;
+            Count--;
+        }
+        
+        /// <summary>
+        /// Reverse the order of the array
+        /// </summary>
+        public void Reverse()
+        {
+            var tempArr = new T[size];
+            for (int i = Count - 1; i >= 0; i--)
+                tempArr[Count - i - 1] = array[i];
+
+            array = tempArr;
         }
 
         private void ResizeArray()

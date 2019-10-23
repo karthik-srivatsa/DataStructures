@@ -21,7 +21,7 @@ Array is the basic data structure which holds the items in contigous memory. It 
             Console.WriteLine("Performing Array Demo");
             Console.WriteLine("Creating array of trype strings of length 3...");
             array = new Array<string>(3);
-            Console.WriteLine($"Array created.{Environment.NewLine}Length of the Array: {array.Length}.{Environment.NewLine}Size of Array is {array.MaxSize()}");
+            Console.WriteLine($"Array created.{Environment.NewLine}Length of the Array: {array.Count}.{Environment.NewLine}Size of Array is {array.MaxSize()}");
             PrintSpaces();
             Console.WriteLine("Inserting the items...");
             array.Add("Harman");
@@ -32,7 +32,7 @@ Array is the basic data structure which holds the items in contigous memory. It 
             PrintSpaces();
             Console.WriteLine("Now the array is full. Trying to add new item. Expectation is resize in array");
             array.Add("Odessa");
-            Console.WriteLine($"New Item added.{Environment.NewLine}Current Length of the Array: {array.Length}.{Environment.NewLine}Current Size of Array is {array.MaxSize()}");
+            Console.WriteLine($"New Item added.{Environment.NewLine}Current Length of the Array: {array.Count}.{Environment.NewLine}Current Size of Array is {array.MaxSize()}");
             PrintArray();
             PrintSpaces();
             Console.WriteLine("Checking the index of the items");
@@ -41,9 +41,9 @@ Array is the basic data structure which holds the items in contigous memory. It 
             PrintSpaces();
             Console.WriteLine("Removing items from array.\nRemoving Resideo");
             array.RemoveAt(array.IndexOf("Resideo"));
-            Console.WriteLine($"Current Length of the Array: {array.Length}.{Environment.NewLine}Current Size of Array is {array.MaxSize()}");
+            Console.WriteLine($"Current Length of the Array: {array.Count}.{Environment.NewLine}Current Size of Array is {array.MaxSize()}");
             Console.WriteLine("Accessing array using index");
-            for(int i = 0; i < array.Length; i++)
+            for(int i = 0; i < array.Count; i++)
                 Console.WriteLine(array[i]);
             Console.WriteLine("Array operation completed");
         }
